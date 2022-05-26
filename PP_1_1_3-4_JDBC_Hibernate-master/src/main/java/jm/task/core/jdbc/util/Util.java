@@ -32,6 +32,7 @@ public class Util {
     // реализуйте настройку соеденения с БД
 
     private static SessionFactory sessionFactory;
+
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
@@ -39,16 +40,16 @@ public class Util {
 
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/myusersbase?autoReconnect=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC\"");
-                settings.put(Environment.USER, "root");
-                settings.put(Environment.PASS, "930D2bf6");
+                settings.put(Environment.URL, DB_URL);
+                settings.put(Environment.USER, DB_USERNAME);
+                settings.put(Environment.PASS, DB_PASSWORD);
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
 
                 settings.put(Environment.SHOW_SQL, "true");
 
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
-                settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+                //settings.put(Environment.HBM2DDL_AUTO, "spring.jpa.hibernate.ddl-auto=update");
 
                 configuration.setProperties(settings);
 
